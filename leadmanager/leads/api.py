@@ -1,11 +1,18 @@
-from leads.models import Lead
+from leads.models import UserRole, RegistUser
 from rest_framework import viewsets, permissions
-from .serializers import LeadSerializer
+from .serializers import UserRoleSerializer, RegistUserSerializer
 
 # Lead Viewset
-class LeadViewSet(viewsets.ModelViewSet):
-  queryset = Lead.objects.all()
+class UserRoleViewSet(viewsets.ModelViewSet):
+  queryset = UserRole.objects.all()
   permission_classes = [
     permissions.AllowAny
   ]
-  serializer_class = LeadSerializer
+  serializer_class = UserRoleSerializer
+
+class RegistUserViewSet(viewsets.ModelViewSet):
+  queryset = RegistUser.objects.all()
+  permission_classes = [
+    permissions.AllowAny
+  ]
+  serializer_class = RegistUserSerializer
