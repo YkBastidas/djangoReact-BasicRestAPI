@@ -1,8 +1,13 @@
 from rest_framework import serializers
-from leads.models import Lead
+from leads.models import UserRole, RegistUser
 
 #Lead Serializer
-class LeadSerializer(serializers.ModelSerializer):
+class UserRoleSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Lead
+    model = UserRole
+    fields = '__all__'
+
+class RegistUserSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = RegistUser
     fields = '__all__'
