@@ -128,3 +128,4 @@ dmypy.json
 .pyre/
 ACAVUCAB Session.sql
 docs
+leadmanager/frontend/static/frontend/main.js
