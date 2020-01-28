@@ -5,7 +5,9 @@ import { getUsers, deleteUser } from "../../actions/leads";
 
 export class Leads extends Component {
   static PropTypes = {
-    users: PropTypes.array.isRequired
+    users: PropTypes.array.isRequired,
+    getLeads: PropTypes.func.isRequired,
+    deleteLead: PropTypes.func.isRequired
   };
 
   componentDidMount() {
