@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import leads from "./leads";
+import users from "./users";
+import roles from "./roles";
 
 export default combineReducers({
-  leads
+  users,
+  roles
 });

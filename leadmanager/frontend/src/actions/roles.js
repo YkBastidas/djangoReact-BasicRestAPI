@@ -1,14 +1,14 @@
 import axios from "axios";
 
-import { GET_USERS } from "./types";
+import { GET_ROLES } from "./types";
 
-// GET USERS
-export const getUsers = () => dispatch => {
+// GET ROLES
+export const getRoles = () => dispatch => {
   axios
-    .get("/api/registUser/")
+    .get("/api/userRole/")
     .then(res => {
       dispatch({
-        type: GET_USERS,
+        type: GET_ROLES,
         payload: res.data
       });
     })

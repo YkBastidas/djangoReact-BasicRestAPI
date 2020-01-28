@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getUsers } from "../../actions/leads";
+import { getUsers, deleteUser } from "../../actions/users";
 
-export class Leads extends Component {
-  static PropTypes = {
-    users: PropTypes.array.isRequired
+export class Users extends Component {
+  static propTypes = {
+    users: PropTypes.array.isRequired,
+    getUsers: PropTypes.func.isRequired,
+    deleteUser: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -32,7 +34,13 @@ export class Leads extends Component {
                 <td>{user.user_name}</td>
                 <td>{user.user_created_at}</td>
                 <td>
-                  <button className="btn btn-danger btn-sm"> Delete </button>
+                  <button
+                    onClick={this.props.deleteUser.bind(this, user.user_id)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    {" "}
+                    Delete{" "}
+                  </button>
                 </td>
               </tr>
             ))}
@@ -44,7 +52,7 @@ export class Leads extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.leads.users
+  users: state.users.users
 });
 
-export default connect(mapStateToProps, { getUsers })(Leads);
+export default connect(mapStateToProps, { getUsers, deleteUser })(Users);

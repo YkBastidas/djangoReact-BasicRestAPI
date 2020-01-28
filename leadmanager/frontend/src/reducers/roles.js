@@ -1,16 +1,15 @@
-import { GET_USERS } from "../actions/types.js";
+import { GET_ROLES } from "../actions/types.js";
 
 const initialState = {
-  something: "text",
-  users: []
+  roles: []
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_USERS:
+    case GET_ROLES:
       return {
         ...state,
-        users: action.payload
+        roles: action.payload
       };
     default:
       return state;
