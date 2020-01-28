@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getUsers, deleteUser } from "../../actions/leads";
+import { getUsers, deleteUser } from "../../actions/users";
 
-export class Leads extends Component {
-  static PropTypes = {
+export class Users extends Component {
+  static propTypes = {
     users: PropTypes.array.isRequired,
-    getLeads: PropTypes.func.isRequired,
-    deleteLead: PropTypes.func.isRequired
+    getUsers: PropTypes.func.isRequired,
+    deleteUser: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -52,7 +52,7 @@ export class Leads extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.leads.users
+  users: state.users.users
 });
 
-export default connect(mapStateToProps, { getUsers, deleteUser })(Leads);
+export default connect(mapStateToProps, { getUsers, deleteUser })(Users);
