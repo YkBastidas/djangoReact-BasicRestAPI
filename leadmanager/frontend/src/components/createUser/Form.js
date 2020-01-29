@@ -9,7 +9,7 @@ function validation(user, userType) {
   const regexPassword = new RegExp(
     "^(?=.*\\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,20}$"
   );
-  const regexNamesAndNumbers = new RegExp("^[A-Za-z0-9 -]*[^_W]$");
+  const regexNamesAndNumbers = new RegExp("^[\\w-]{3,29}[^_\\W]$");
   const errors = [];
   if (userType === "user") {
     if (regexNamesAndNumbers.test(user.username) === false)
