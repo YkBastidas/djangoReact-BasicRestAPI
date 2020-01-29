@@ -28,6 +28,11 @@ export class Form extends Component {
       user_fk_role = this.state.role_id;
     const user = { user_name, user_password, user_fk_role };
     this.props.addUser(user);
+    this.setState({
+      username: "",
+      password: "",
+      role_id: ""
+    });
   };
 
   componentDidMount() {
