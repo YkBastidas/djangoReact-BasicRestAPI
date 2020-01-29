@@ -31,26 +31,24 @@ export const deleteUser = id => dispatch => {
 };
 
 // ADD USER
-export const addUser = user => dispatch => {
-  return axios
-    .post("/api/registUser/", user)
-    .then(res => {
-      dispatch(createMessage({ addUser: "Usuario Agregado" }));
-      dispatch({
-        type: ADD_USER,
-        payload: res.data
-      });
-      return "ok";
-    })
-    .catch(err => {
-      const errors = {
-        msg: err.response.data,
-        status: err.response.status
-      };
-      dispatch({
-        type: GET_ERRORS,
-        payload: errors
-      });
-      return "err";
+export const addUser = user => async dispatch => {
+  try {
+    const res = await axios.post("/api/registUser/", user);
+    dispatch(createMessage({ addUser: "Usuario Agregado" }));
+    dispatch({
+      type: ADD_USER,
+      payload: res.data
     });
+    return "ok";
+  } catch (err) {
+    const errors = {
+      msg: err.response.data,
+      status: err.response.status
+    };
+    dispatch({
+      type: GET_ERRORS,
+      payload: errors
+    });
+    return "err";
+  }
 };
