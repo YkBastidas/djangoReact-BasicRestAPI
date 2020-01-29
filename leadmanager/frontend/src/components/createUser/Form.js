@@ -21,18 +21,20 @@ export class Form extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = e => {
+  onSubmit = async e => {
     e.preventDefault();
     const user_name = this.state.username,
       user_password = this.state.password,
       user_fk_role = this.state.role_id;
     const user = { user_name, user_password, user_fk_role };
-    this.props.addUser(user);
-    this.setState({
-      username: "",
-      password: "",
-      role_id: ""
-    });
+    const result = await this.props.addUser(user);
+    if (result === "ok") {
+      this.setState({
+        username: "",
+        password: "",
+        role_id: ""
+      });
+    }
   };
 
   onReset = e => {

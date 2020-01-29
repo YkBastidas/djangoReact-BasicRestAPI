@@ -32,7 +32,7 @@ export const deleteUser = id => dispatch => {
 
 // ADD USER
 export const addUser = user => dispatch => {
-  axios
+  return axios
     .post("/api/registUser/", user)
     .then(res => {
       dispatch(createMessage({ addUser: "Usuario Agregado" }));
@@ -40,6 +40,7 @@ export const addUser = user => dispatch => {
         type: ADD_USER,
         payload: res.data
       });
+      return "ok";
     })
     .catch(err => {
       const errors = {
@@ -50,5 +51,6 @@ export const addUser = user => dispatch => {
         type: GET_ERRORS,
         payload: errors
       });
+      return "err";
     });
 };
